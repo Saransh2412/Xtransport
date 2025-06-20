@@ -13,9 +13,10 @@ const Navbar = () => {
 
         {/* Center Navigation */}
         <div className="flex justify-center lg:justify-center space-x-8 text-sm font-semibold">
+                    <Link to="/" className="hover:text-red-500 transition-colors">Home</Link>
           <Link to="/services" className="hover:text-red-500 transition-colors">Services</Link>
           <Link to="/carriers" className="hover:text-red-500 transition-colors">Carriers</Link>
-          <Link to="/company" className="hover:text-red-500 transition-colors">Company</Link>
+          <Link to="/aboutus" className="hover:text-red-500 transition-colors">About Us</Link>
           <Link to="/contact" className="hover:text-red-500 transition-colors">Contact</Link>
         </div>
 
