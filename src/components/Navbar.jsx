@@ -7,23 +7,26 @@ const Navbar = () => {
       <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between space-y-3 lg:space-y-0">
         
         {/* Brand Logo Link to Home */}
-        <Link to="/" className="text-2xl font-bold tracking-wider text-red-500 hover:text-red-400 transition-colors">
+        <Link to="/" className="text-2xl font-bold tracking-wider text-blue-500 hover:text-blue-400 transition-colors">
           Xtransport
         </Link>
 
         {/* Center Navigation */}
         <div className="flex justify-center lg:justify-center space-x-8 text-sm font-semibold">
-                    <Link to="/" className="hover:text-red-500 transition-colors">Home</Link>
-          <Link to="/services" className="hover:text-red-500 transition-colors">Services</Link>
-          <Link to="/carriers" className="hover:text-red-500 transition-colors">Carriers</Link>
-          <Link to="/aboutus" className="hover:text-red-500 transition-colors">About Us</Link>
-          <Link to="/contact" className="hover:text-red-500 transition-colors">Contact</Link>
+          <Link to="/" className="hover:text-blue-500 transition-colors">Home</Link>
+          <Link to="/services" className="hover:text-blue-500 transition-colors">Services</Link>
+          <Link to="/carriers" className="hover:text-blue-500 transition-colors">Carriers</Link>
+          <Link to="/aboutus" className="hover:text-blue-500 transition-colors">About Us</Link>
+          <Link to="/contact" className="hover:text-blue-500 transition-colors">Contact</Link>
+
+
         </div>
 
         {/* Right Button */}
         <div className="flex justify-center lg:justify-end">
-          <button className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-white font-semibold text-sm transition-all">
-            Quick Quote
+          <button className="bg-blue-600 hover:bg-blue-800 px-4 py-2 rounded-md text-white font-semibold text-sm transition-all">
+   
+            <Link to="/quickquote" className="hover:text-blue-500 transition-colors">Quick Quote</Link>
           </button>
         </div>
       </div>

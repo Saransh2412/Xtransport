@@ -23,7 +23,7 @@ const HeroSection = () => {
           Delivering All Over Canada
         </h1>
         <p className="text-white text-lg md:text-2xl font-medium max-w-2xl drop-shadow-md">
-          Reliable, fast, and secure freight solutions for every shipment.
+          Deliver seamless, reliable heavy haul solutions across North America with precision and expertise.
         </p>
       </div>
     </section>
