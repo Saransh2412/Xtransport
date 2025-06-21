@@ -97,10 +97,12 @@ const Footer = () => {
               <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link>
               <Link to="/cookies" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</Link>
             </div>
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex items-center mt-2 md:mt-0">
-              <Shield className="w-4 h-4 mr-2" />
-              Admin
-            </button>
+           <Link to="/admin">
+      <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex items-center mt-2 md:mt-0">
+        <Shield />
+        Admin
+      </button>
+    </Link>
           </div>
         </div>
       </div>

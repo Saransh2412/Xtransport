@@ -24,10 +24,12 @@ const Navbar = () => {
 
         {/* Right Button */}
         <div className="flex justify-center lg:justify-end">
-          <button className="bg-blue-600 hover:bg-blue-800 px-4 py-2 rounded-md text-white font-semibold text-sm transition-all">
-   
-            <Link to="/quickquote" className="hover:text-blue-500 transition-colors">Quick Quote</Link>
-          </button>
+<Link to="/quickquote">
+  <button className="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300">
+    Get a Quote
+  </button>
+</Link>
+
         </div>
       </div>
     </nav>

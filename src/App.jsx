@@ -6,8 +6,9 @@ import AboutUs from "./pages/AboutUs";
 import Footer from "./components/Footer";
 import ContactUs from "./pages/Contact";
 import QuoteRequestPage from "./pages/QuickQuote";
+import AdminPanel from "./Admin/Admin";
 
-// import Services from "./pages/Services";
+import Services from "./pages/Services";
 // import Carriers from "./pages/Carriers";
 // import Company from "./pages/Company";
 // import Contact from "./pages/Contact";
@@ -20,11 +21,12 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-           {/* <Route path="/services" element={<Services />} />
-          <Route path="/carriers" element={<Carriers />} /> */}
+            <Route path="/services" element={<Services />} />
+          {/*<Route path="/carriers" element={<Carriers />} /> */}
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} /> 
-          <Route path="/quickquote" element={<QuoteRequestPage />} /> 
+          <Route path="/quickquote" element={<QuoteRequestPage />} />
+          <Route path="/admin" element={<AdminPanel />} />
 
         </Routes>
         <Footer/>
