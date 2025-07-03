@@ -20,7 +20,7 @@ const HeroSection = () => {
       {/* Text Overlay */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
-          Delivering All Over Canada
+          Delivering All Over USA & Canada
         </h1>
         <p className="text-white text-lg md:text-2xl font-medium max-w-2xl drop-shadow-md">
           Deliver seamless, reliable heavy haul solutions across North America with precision and expertise.
