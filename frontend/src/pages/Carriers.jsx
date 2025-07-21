@@ -1,6 +1,8 @@
 // src/components/Carriers.jsx
 import React, { useState } from 'react';
 import truck1 from '../assets/truck1.jpg';
+import { useApi } from '../context/ApiContext';
+
 
 const positions = [
 	{
@@ -239,6 +241,8 @@ const Carriers = () => {
 	const [formData, setFormData] = useState({});
 	const [submitting, setSubmitting] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
+		const { API_BASE_URL } = useApi();
+
 
 	const onApply = (id) => {
 		setSelected(id);
@@ -270,7 +274,8 @@ const Carriers = () => {
 		
 		// Send the API request in the background
 		const endpoint = selected === 'company-driver' ? 'driver' : 'operator';
-		fetch(`http://localhost:3000/api/${endpoint}`, {
+		fetch(`${API_BASE_URL}/api/${endpoint}`, {
+
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

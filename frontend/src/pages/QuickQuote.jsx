@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useApi } from '../context/ApiContext'; // ✅ Import the API context
 
 export default function QuoteRequestPage() {
+  const { API_BASE_URL } = useApi(); // ✅ Use the API base URL from context
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [formData, setFormData] = useState({
-    // Contact Information
     companyName: '',
     email: '',
     firstName: '',
     lastName: '',
     phoneNumber: '',
     streetAddress: '',
-    
-    // Shipment Details
     serviceType: '',
     weight: '',
     freightDescription: '',
-    
-    // Pick-up & Delivery
     length: '',
     height: '',
     width: '',
@@ -39,11 +37,11 @@ export default function QuoteRequestPage() {
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    
-    // Show success message immediately
+
     alert('Quote request submitted successfully!');
-    
-    // Reset form data
+
+    const payload = { ...formData };
+
     setFormData({
       companyName: '',
       email: '',
@@ -63,19 +61,19 @@ export default function QuoteRequestPage() {
       deliveryDate: ''
     });
 
-    // Send the API request in the background
-    fetch('http://localhost:3000/api/quick-quote', {
+    // ✅ Use API_BASE_URL instead of hardcoding
+    fetch(`${API_BASE_URL}/api/quick-quote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     }).catch(error => {
       console.error('Error:', error);
-      // Since we already showed success message and cleared the form,
-      // we'll just log the error if the API call fails
     });
   };
+
+  // ...rest of your component's JSX
 
   return (
     <div className="min-h-screen bg-gray-50">

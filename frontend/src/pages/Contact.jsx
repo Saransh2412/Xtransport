@@ -4,9 +4,12 @@ import {
   MessageSquare, Truck, Shield, Calculator
 } from 'lucide-react';
 
-import truckBackground from '../assets/truck2.jpg'; // ✅ Adjust the path if needed
+import truckBackground from '../assets/truck2.jpg';
+import { useApi } from '../context/ApiContext'; // ✅ Import the API context
 
 const ContactUs = () => {
+  const { API_BASE_URL } = useApi(); // ✅ Access the base URL
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,11 +31,11 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Show success message immediately
+
     alert('Message sent successfully!');
-    
-    // Reset form data
+
+    const payload = { ...formData };
+
     setFormData({
       name: '',
       email: '',
@@ -41,17 +44,14 @@ const ContactUs = () => {
       message: ''
     });
 
-    // Send the API request in the background
-    fetch('http://localhost:3000/api/contact', {
+    fetch(`${API_BASE_URL}/api/contact`, { // ✅ Use API_BASE_URL from context
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     }).catch(error => {
       console.error('Error:', error);
-      // Since we already showed success message and cleared the form,
-      // we'll just log the error if the API call fails
     });
   };
 
