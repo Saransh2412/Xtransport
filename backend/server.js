@@ -42,8 +42,9 @@ app.post("/api/quick-quote", async (req, res) => {
   try {
     await sendEmails({
       toAdmin: {
-        from: email,
-        to: config.email.user,
+         from: config.email.user,      // must be your email
+  to: config.email.user,        // admin (you)
+  replyTo: email, 
         subject: "New Quick Quote Request",
         text: `Contact Information:
 Name: ${firstName} ${lastName}
@@ -96,8 +97,9 @@ app.post("/api/driver", async (req, res) => {
   try {
     await sendEmails({
       toAdmin: {
-        from: email,
-        to: config.email.user,
+         from: config.email.user,      // must be your email
+         to: config.email.user,        // admin (you)
+        replyTo: email, 
         subject: "New Driver Application",
         text: `Personal Information:
 Name: ${firstName} ${lastName}
@@ -148,8 +150,9 @@ app.post("/api/operator", async (req, res) => {
   try {
     await sendEmails({
       toAdmin: {
-        from: email,
-        to: config.email.user,
+         from: config.email.user,      // must be your email
+  to: config.email.user,        // admin (you)
+  replyTo: email, 
         subject: "New Owner Operator Application",
         text: `Personal Information:
 Name: ${firstName} ${lastName}
@@ -196,8 +199,9 @@ app.post("/api/contact", async (req, res) => {
   try {
     await sendEmails({
       toAdmin: {
-        from: email,
-        to: config.email.user,
+         from: config.email.user,      // must be your email
+          to: config.email.user,        // admin (you)
+          replyTo: email, 
         subject: "New Contact Inquiry",
         text: `Contact Details:
 Name: ${name}
