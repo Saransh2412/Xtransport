@@ -199,7 +199,7 @@ const Home = () => {
               </div>
 
               <a
-                href="/contact"
+                href="/Carriers"
                 className="inline-block px-8 py-4 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300 mb-6"
               >
                 BECOME A PARTNER CARRIER
@@ -210,7 +210,7 @@ const Home = () => {
               </p>
 
               <a
-                href="/contact"
+                href="/Carriers"
                 className="inline-block px-8 py-4 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300"
               >
                 JOIN OUR TEAM
