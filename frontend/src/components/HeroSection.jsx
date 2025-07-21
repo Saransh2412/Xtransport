@@ -3,9 +3,8 @@ import mainVideo from '../assets/main_video.mp4';
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-[70vh] overflow-hidden">
-      
-      {/* Background Video with brightness filter */}
+    <section className="relative w-full min-h-[60vh] md:h-[70vh] overflow-hidden">
+      {/* Background Video */}
       <video
         autoPlay
         muted
@@ -18,11 +17,11 @@ const HeroSection = () => {
       </video>
 
       {/* Text Overlay */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6">
+        <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg leading-snug sm:leading-tight">
           Delivering All Over USA & Canada
         </h1>
-        <p className="text-white text-lg md:text-2xl font-medium max-w-2xl drop-shadow-md">
+        <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-medium max-w-2xl drop-shadow-md leading-relaxed">
           Deliver seamless, reliable heavy haul solutions across North America with precision and expertise.
         </p>
       </div>

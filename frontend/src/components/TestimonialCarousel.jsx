@@ -59,28 +59,28 @@ const TestimonialCarousel = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-gray-900">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Testimonials</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Testimonials</h2>
 
-        <div className="max-w-4xl mx-auto relative">
+        <div className="relative max-w-4xl mx-auto">
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-colors duration-200 z-10"
+            className="absolute left-2 sm:-left-12 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white p-2 sm:p-3 rounded-full shadow-lg transition duration-200 z-10"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-colors duration-200 z-10"
+            className="absolute right-2 sm:-right-12 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 text-white p-2 sm:p-3 rounded-full shadow-lg transition duration-200 z-10"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Testimonial Card */}
-          <div className="bg-gray-100 p-8 rounded-lg shadow-lg min-h-[300px] flex flex-col justify-between transition-all duration-300">
+          <div className="bg-gray-100 p-6 sm:p-8 rounded-lg shadow-lg min-h-[300px] flex flex-col justify-between transition-all duration-300">
             <div>
               <div className="flex items-center mb-4">
                 {Array.from({ length: currentReview.rating }).map((_, i) => (
@@ -90,7 +90,7 @@ const TestimonialCarousel = () => {
                   <Star key={i} className="w-5 h-5 text-gray-300" />
                 ))}
               </div>
-              <p className="mb-6 text-lg leading-relaxed">{currentReview.text}</p>
+              <p className="mb-6 text-base sm:text-lg leading-relaxed">{currentReview.text}</p>
             </div>
 
             <div className="border-t pt-4 text-sm">
@@ -103,13 +103,13 @@ const TestimonialCarousel = () => {
             </div>
           </div>
 
-          {/* Indicators */}
+          {/* Dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {reviews.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                className={`w-3 h-3 rounded-full transition duration-200 ${
                   index === currentIndex ? 'bg-gray-800' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
@@ -117,7 +117,7 @@ const TestimonialCarousel = () => {
             ))}
           </div>
 
-          {/* Counter */}
+          {/* Index Counter */}
           <div className="text-center mt-4 text-sm text-gray-500">
             {currentIndex + 1} of {reviews.length}
           </div>

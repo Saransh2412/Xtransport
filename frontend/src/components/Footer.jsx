@@ -1,7 +1,5 @@
 import React from "react";
-import { Truck, MapPin, Phone, Mail, Clock, Shield } from "lucide-react";
-
-
+import { Truck, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -15,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
 
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -26,7 +24,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-6 leading-relaxed">
               Your trusted partner for heavy hauling and oversized transportation across Canada and the United States. We specialize in handling big projects with safety, reliability, and efficiency.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {/* Twitter */}
               <a href="#" aria-label="Twitter" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -55,8 +53,6 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>Home</Link></li>
               <li><Link to="/aboutus" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>About Us</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>Services</Link></li>
-              {/* <li><Link to="/fleet" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>Fleet</Link></li> */}
-              {/* <li><Link to="/projects" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>Projects</Link></li> */}
               <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors" onClick={scrollToTop}>Contact</Link></li>
             </ul>
           </div>
@@ -64,7 +60,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-sm sm:text-base">
               <div className="flex items-start">
                 <MapPin className="w-5 h-5 text-blue-400 mr-3 mt-0.5" />
                 <div className="text-gray-300">
@@ -94,22 +90,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm mb-4 md:mb-0">
+        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 text-center sm:text-left">
+          <div className="text-gray-400 text-sm">
             © 2025 X Transport Inc. All rights reserved.
           </div>
-          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
-            {/* <div className="flex space-x-4 text-sm">
-              <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</Link>
-              <Link to="/cookies" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</Link>
-            </div> */}
-           {/* <Link to="/admin">
-      <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex items-center mt-2 md:mt-0">
-        <Shield />
-        Admin
-      </button>
-    </Link> */}
+          {/* Future Links or Admin button placeholder */}
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            {/* Reserved for future links or buttons */}
           </div>
         </div>
       </div>

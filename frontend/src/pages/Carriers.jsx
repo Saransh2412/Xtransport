@@ -296,7 +296,7 @@ const Carriers = () => {
 		return (
 			<div className="w-full lg:w-screen px-0 py-0 relative shadow-2xl border border-blue-200 min-h-[700px] overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50">
 				<img src={truck1} alt="Truck" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" style={{zIndex:0}} />
-				<div className="relative z-10 flex flex-col lg:flex-row gap-8 w-full h-full">
+<div className="relative z-10 flex flex-col lg:flex-row gap-6 md:gap-10 w-full h-full px-4 sm:px-6">
 					{/* Left: Job Details */}
 					<div className="flex-1 p-12 text-black">
 						<button onClick={() => setSelected(null)} className="mb-4 text-blue-600">
@@ -356,7 +356,8 @@ const Carriers = () => {
 												<p className="font-semibold text-black mb-2">
 													{fld.label}{fld.required && <span className="text-red-500">*</span>}
 												</p>
-												<div className="flex gap-4 mt-1">
+												<div className="flex flex-wrap gap-4 mt-1">
+
 													{fld.options.map((opt) => (
 														<label key={opt} className="inline-flex items-center text-black cursor-pointer">
 															<input
@@ -430,7 +431,7 @@ const Carriers = () => {
 	return (
 		<div className="font-sans leading-relaxed text-gray-800">
 			{/* Hero Section */}
-			<section className="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+<section className="relative min-h-[80vh] md:h-screen flex items-center justify-center text-center text-white overflow-hidden px-4 sm:px-6">
 				<img src={truck1} alt="Truck" className="absolute inset-0 w-full h-full object-cover opacity-100 z-0" />
 				<div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 				<div className="relative z-10 max-w-4xl mx-auto px-6">
@@ -451,7 +452,8 @@ const Carriers = () => {
 					<h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">
 						Available Positions
 					</h2>
-					<div className="grid lg:grid-cols-2 gap-10 mb-16">
+					<div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-16">
+
 						{positions.map((pos) => (
 							<div
 								key={pos.id}
@@ -498,7 +500,7 @@ const Carriers = () => {
 					<h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">
 						Why Choose Us?
 					</h2>
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 						{benefits.map((b, i) => (
 							<div
 								key={i}
@@ -521,7 +523,8 @@ const Carriers = () => {
 					<h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900">
 						Career Opportunities
 					</h2>
-					<div className="grid md:grid-cols-2 gap-6">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
 						{opportunities.map((o, i) => (
 							<div
 								key={i}
@@ -537,7 +540,7 @@ const Carriers = () => {
 
 			{/* Call to Action */}
 			<section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white text-center">
-				<div className="max-w-4xl mx-auto px-6">
+					<div className="max-w-4xl mx-auto px-4 sm:px-6">
 					<h2 className="text-4xl md:text-5xl font-bold mb-6">
 						Ready to Drive Your Career Forward?
 					</h2>

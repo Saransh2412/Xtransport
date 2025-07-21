@@ -67,88 +67,87 @@ const Services = () => {
         className="h-[60vh] relative bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${truck3})` }}
       >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
-       <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-  <h1 className="text-5xl font-extrabold uppercase text-white tracking-wide">
-    Our Services
-  </h1>
-  <div className="flex flex-wrap justify-center gap-4 mt-4">
-    {serviceData.map((service) => (
-      <button
-        key={service.key}
-        onClick={() => setSelectedService(service)}
-        className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
-          selectedService.key === service.key
-            ? "bg-blue-500 text-white"
-            : "bg-white/20 text-white hover:bg-blue-500"
-        }`}
-      >
-        {service.title}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" />
+        <div className="relative z-10 flex flex-col items-center gap-6 text-center px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-white tracking-wide">
+            Our Services
+          </h1>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-4">
+            {serviceData.map((service) => (
+              <button
+                key={service.key}
+                onClick={() => setSelectedService(service)}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors ${
+                  selectedService.key === service.key
+                    ? "bg-blue-500 text-white"
+                    : "bg-white/20 text-white hover:bg-blue-500"
+                }`}
+              >
+                {service.title}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Services Detail Section */}
+      <div className="relative py-16 sm:py-20 px-4 sm:px-6">
+        {/* Background Layers */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${selectedService.bg})` }}
+        />
+        <div className="absolute inset-4 sm:inset-10 bg-black/60 backdrop-blur-md z-0 rounded-lg" />
+
+  {/* Foreground Content */}
+<div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row gap-10 bg-transparent px-4 sm:px-6">
+  {/* Sidebar on top for mobile */}
+  <div className="w-full md:w-1/3 backdrop-blur-sm bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
+    <ul className="space-y-3 text-sm sm:text-base font-medium">
+      {serviceData.map((service) => (
+        <li
+          key={service.key}
+          onClick={() => setSelectedService(service)}
+          className={`cursor-pointer transition-colors ${
+            selectedService.key === service.key
+              ? "text-blue-300 font-semibold"
+              : "text-white hover:text-blue-400"
+          }`}
+        >
+          {service.title}
+        </li>
+      ))}
+    </ul>
+
+    <Link to="/contact">
+      <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold text-sm sm:text-base">
+        ✉ Contact Us
       </button>
+    </Link>
+  </div>
+
+  {/* Main Content */}
+  <div className="w-full md:w-2/3 backdrop-blur-sm bg-black/50 rounded-lg p-6 md:p-8 border border-white/20 text-white">
+    <p className="text-blue-200 font-bold uppercase text-xs sm:text-sm mb-2">Services & Modes</p>
+    <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2">
+      {selectedService.title}
+    </h2>
+    <h3 className="text-sm sm:text-base font-semibold text-white mb-4">
+      Your Trusted Partner in {selectedService.title}
+    </h3>
+
+    {selectedService.desc.split("\n").map((para, i) => (
+      <p key={i} className="text-sm sm:text-base leading-relaxed mb-3">
+        {para.trim()}
+      </p>
     ))}
   </div>
 </div>
 
       </div>
 
-      {/* Services Section */}
-      <div className="relative py-20 px-4">
-        {/* Background Layer */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${selectedService.bg})` }}
-        ></div>
-        <div className="absolute inset-16 bg-black/60 backdrop-blur-md z-0"></div>
-
-        {/* Foreground Content */}
-        <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-4 gap-8 p-8 rounded-xl transition-all duration-500 ease-in-out">
-          {/* Sidebar */}
-          <div className="col-span-1">
-            <ul className="space-y-4 font-medium text-lg">
-              {serviceData.map((service) => (
-                <li
-                  key={service.key}
-                  onClick={() => setSelectedService(service)}
-                  className={`cursor-pointer transition-colors ${
-                    selectedService.key === service.key
-                      ? "text-blue-300 font-semibold"
-                      : "text-white hover:text-blue-500"
-                  }`}
-                >
-                  {service.title}
-                </li>
-              ))}
-            </ul>
-            <Link to="/contact">
-              <button className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded flex items-center justify-center gap-2">
-                <span className="text-lg">✉</span> CONTACT US
-              </button>
-            </Link>
-          </div>
-
-          {/* Main Content */}
-          <div className="col-span-3 space-y-6">
-            <p className="text-white font-bold uppercase">Services & Modes</p>
-            <h2 className="text-4xl font-extrabold">{selectedService.title}</h2>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Your Trusted Partner in {selectedService.title}
-            </h3>
-            {selectedService.desc.split("\n").map((para, i) => (
-              <p key={i} className="text-white leading-relaxed">
-                {para.trim()}
-              </p>
-            ))}
-            {/* <Link to="/quote">
-              <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded font-semibold">
-                QUICK QUOTE
-              </button>
-            </Link> */}
-          </div>
-        </div>
-      </div>
-
       {/* Map Section */}
-      <div className="w-full h-[400px]">
+      <div className="w-full h-[300px] sm:h-[400px]">
         <iframe
           title="North America Map"
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6507971.173614891!2d-98.5795!3d56.1304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca"
