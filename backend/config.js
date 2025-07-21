@@ -1,22 +1,12 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const process = require('process');
 import { config as dotenvConfig } from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-// Get the directory name
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Load environment variables
-dotenvConfig({ path: join(__dirname, '.env') });
+dotenvConfig(); // Automatically loads from root .env if available
 
 const config = {
   email: {
-    user: process.env.EMAIL_USER ,
-    pass: process.env.EMAIL_PASS 
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
-  port: parseInt(process.env.PORT, 10)
+  port: parseInt(process.env.PORT, 10) || 3000
 };
 
 export default config;
