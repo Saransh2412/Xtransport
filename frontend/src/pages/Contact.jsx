@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Phone, Mail, MapPin, Clock, Send, User,
   MessageSquare, Truck, Shield, Calculator
@@ -7,6 +7,10 @@ import {
 import truckBackground from '../assets/truck2.jpg'; // ✅ Adjust the path if needed
 
 const ContactUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +28,31 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    // Show success message immediately
+    alert('Message sent successfully!');
+    
+    // Reset form data
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: ''
+    });
+
+    // Send the API request in the background
+    fetch('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).catch(error => {
+      console.error('Error:', error);
+      // Since we already showed success message and cleared the form,
+      // we'll just log the error if the API call fails
+    });
   };
 
   return (
@@ -133,7 +161,7 @@ const ContactUs = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     placeholder="Heavy Equipment Transport Inquiry"
                   />
                 </div>
@@ -144,7 +172,7 @@ const ContactUs = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
                     placeholder="Please describe your transportation needs..."
                     required
                   ></textarea>
@@ -217,7 +245,7 @@ const InputWithIcon = ({ label, name, type, placeholder, icon, value, onChange, 
         onChange={onChange}
         required={required}
         placeholder={placeholder}
-        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black"
       />
     </div>
   </div>

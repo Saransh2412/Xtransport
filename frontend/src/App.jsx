@@ -6,7 +6,7 @@ import AboutUs from "./pages/AboutUs";
 import Footer from "./components/Footer";
 import ContactUs from "./pages/Contact";
 import QuoteRequestPage from "./pages/QuickQuote";
-import AdminPanel from "./Admin/Admin";
+// import AdminPanel from "./Admin/Admin";
 
 import Services from "./pages/Services";
 import Carriers from "./pages/Carriers";
@@ -26,7 +26,7 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} /> 
           <Route path="/quickquote" element={<QuoteRequestPage />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          {/* <Route path="/admin" element={<AdminPanel />} /> */}
 
         </Routes>
         <Footer/>

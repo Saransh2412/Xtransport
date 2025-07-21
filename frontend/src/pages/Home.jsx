@@ -95,29 +95,6 @@ const Home = () => {
     { number: "98.5%", label: "On-Time Delivery Rate" },
   ];
 
-  const reviews = [
-    {
-      name: "Sarah Mitchell",
-      company: "Alpine Manufacturing Ltd.",
-      rating: 5,
-      text: "XTransport has been managing the safe and efficient movement of our goods across North America for over 3 years...",
-      location: "Toronto, ON",
-    },
-    {
-      name: "Michael Rodriguez",
-      company: "Pacific Distributors Inc.",
-      rating: 5,
-      text: "Outstanding reliability and communication throughout every shipment...",
-      location: "Seattle, WA",
-    },
-    {
-      name: "Jennifer Chen",
-      company: "Northern Logistics Co.",
-      rating: 5,
-      text: "The team at XTransport handled our complex heavy haul projects with exceptional expertise...",
-      location: "Vancouver, BC",
-    },
-  ];
 
   return (
     <div className="bg-[#1d1a19] text-white">

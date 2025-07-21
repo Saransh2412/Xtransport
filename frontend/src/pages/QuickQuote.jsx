@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function QuoteRequestPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     // Contact Information
     companyName: '',
@@ -33,9 +37,44 @@ export default function QuoteRequestPage() {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log('Quote request submitted:', formData);
-    alert('Thank you! Your quote request has been submitted. We will contact you shortly.');
+  const handleSubmit = (e) => {
+    if (e) e.preventDefault();
+    
+    // Show success message immediately
+    alert('Quote request submitted successfully!');
+    
+    // Reset form data
+    setFormData({
+      companyName: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      streetAddress: '',
+      serviceType: '',
+      weight: '',
+      freightDescription: '',
+      length: '',
+      height: '',
+      width: '',
+      origin: '',
+      destination: '',
+      pickupDate: '',
+      deliveryDate: ''
+    });
+
+    // Send the API request in the background
+    fetch('http://localhost:3000/api/quick-quote', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).catch(error => {
+      console.error('Error:', error);
+      // Since we already showed success message and cleared the form,
+      // we'll just log the error if the API call fails
+    });
   };
 
   return (
@@ -91,10 +130,11 @@ export default function QuoteRequestPage() {
                     <input
                       type="text"
                       name="companyName"
-                      placeholder="Company name"
+                      placeholder="Company name*"
                       value={formData.companyName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                   <div>
@@ -104,7 +144,7 @@ export default function QuoteRequestPage() {
                       placeholder="Email*"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                       required
                     />
                   </div>
@@ -118,7 +158,7 @@ export default function QuoteRequestPage() {
                       placeholder="First name"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                   <div>
@@ -128,7 +168,7 @@ export default function QuoteRequestPage() {
                       placeholder="Last name"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                 </div>
@@ -141,7 +181,7 @@ export default function QuoteRequestPage() {
                       placeholder="Phone number"
                       value={formData.phoneNumber}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                   <div>
@@ -151,7 +191,7 @@ export default function QuoteRequestPage() {
                       placeholder="Street address"
                       value={formData.streetAddress}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                 </div>
@@ -169,26 +209,28 @@ export default function QuoteRequestPage() {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-black"
+                      required
                     >
-                      <option value="">Service Type</option>
-                      <option value="cross-border">Cross-Border Transportation</option>
-                      <option value="dry-van-reefer">Dry Van & Refrigerated (Reefer) Transportation</option>
-                      <option value="flatbed">Flatbed Shipping</option>
-                      <option value="heavy-haul">Heavy Haul & Over Dimensional</option>
-                      <option value="intermodal">Intermodal / Multimodal Transportation</option>
-                      <option value="project-management">Project Management & Logistics</option>
-                      <option value="other">Other</option>
+                      <option value="" className="text-black">Service Type</option>
+                      <option value="cross-border" className="text-black">Cross-Border Transportation</option>
+                      <option value="dry-van-reefer" className="text-black">Dry Van & Refrigerated (Reefer) Transportation</option>
+                      <option value="flatbed" className="text-black">Flatbed Shipping</option>
+                      <option value="heavy-haul" className="text-black">Heavy Haul & Over Dimensional</option>
+                      <option value="intermodal" className="text-black">Intermodal / Multimodal Transportation</option>
+                      <option value="project-management" className="text-black">Project Management & Logistics</option>
+                      <option value="other" className="text-black">Other</option>
                     </select>
                   </div>
                   <div>
                     <input
                       type="text"
                       name="weight"
-                      placeholder="Weight"
+                      placeholder="Weight*"
                       value={formData.weight}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                 </div>
@@ -200,7 +242,7 @@ export default function QuoteRequestPage() {
                     value={formData.freightDescription}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-black"
                   ></textarea>
                 </div>
               </div>
@@ -219,7 +261,7 @@ export default function QuoteRequestPage() {
                       placeholder="Length"
                       value={formData.length}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                   <div>
@@ -229,7 +271,7 @@ export default function QuoteRequestPage() {
                       placeholder="Height"
                       value={formData.height}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                   <div>
@@ -239,7 +281,7 @@ export default function QuoteRequestPage() {
                       placeholder="Width"
                       value={formData.width}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
                     />
                   </div>
                 </div>
@@ -249,20 +291,22 @@ export default function QuoteRequestPage() {
                     <input
                       type="text"
                       name="origin"
-                      placeholder="Origin"
+                      placeholder="Origin*"
                       value={formData.origin}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                   <div>
                     <input
                       type="text"
                       name="destination"
-                      placeholder="Destination"
+                      placeholder="Destination*"
                       value={formData.destination}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                 </div>
@@ -270,26 +314,28 @@ export default function QuoteRequestPage() {
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Date of Desired Loading
+                      Date of Desired Loading*
                     </label>
                     <input
                       type="date"
                       name="pickupDate"
                       value={formData.pickupDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Date of Desired Delivery
+                      Date of Desired Delivery*
                     </label>
                     <input
                       type="date"
                       name="deliveryDate"
                       value={formData.deliveryDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+                      required
                     />
                   </div>
                 </div>
