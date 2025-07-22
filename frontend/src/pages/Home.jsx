@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
 import truck3 from '../assets/truck3.jpg';
-import TestimonialCarousel from '../components/TestimonialCarousel';
+// import TestimonialCarousel from '../components/TestimonialCarousel';
 
 import {
   Shield, Clock, Users, Globe,
@@ -28,10 +28,10 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: "15,000+", label: "Cross-Border Shipments Per Year" },
-    { number: "500+", label: "Trusted Partner Carriers" },
-    { number: "250,000#", label: "Payload Capacity" },
-    { number: "98.5%", label: "On-Time Delivery Rate" },
+    { number: "612+", label: "Cross-Border Shipments Per Year" },
+    { number: "10+", label: "Trusted Partner Carriers" },
+    { number: "200,000#", label: "Payload Capacity" },
+    { number: "98%", label: "On-Time Delivery Rate" },
   ];
 
   return (
@@ -41,7 +41,7 @@ const Home = () => {
       {/* Why Choose Us */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-gray-900">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Why Companies Choose XTransport</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Why Companies Choose X Transport Inc.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseUs.map((item, index) => (
               <div key={index} className="p-6 sm:p-8 bg-white rounded-lg shadow-md border hover:border-blue-300 transition">
@@ -104,9 +104,9 @@ const Home = () => {
               <p className="text-lg sm:text-xl text-blue-100 leading-relaxed mb-8">
                 XTransport operates a robust fleet... flexible routing to meet the demands of any project or lane.
               </p>
-              <a href="/Carriers" className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300 mb-6">
+              {/* <a href="/Carriers" className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300 mb-6">
                 BECOME A PARTNER CARRIER
-              </a>
+              </a> */}
               <p className="text-blue-100 leading-relaxed mb-8 text-base sm:text-lg">
                 Our extended team includes over 50 full-time staff... heavy haul and general freight logistics.
               </p>
@@ -167,8 +167,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <TestimonialCarousel />
+      {/* Testimonials
+      <TestimonialCarousel /> */}
 
       {/* Map */}
       <section className="relative h-[500px] w-full">

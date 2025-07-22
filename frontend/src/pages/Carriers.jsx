@@ -15,9 +15,9 @@ const positions = [
 		description:
 			'Join our fleet of professional drivers operating state-of-the-art equipment across Canada and the United States. We offer stable employment with excellent benefits and competitive compensation.',
 		requirements: [
-			'Minimum 2 years of Class 1/AZ driving experience',
-			'Minimum 1 year of Commercial Flat Deck/Open Deck experience preferred',
-			'Minimum 1 year of Load Securement experience preferred',
+			'Minimum 6 months of Class 1/AZ driving experience',
+			'Minimum 6 months of Commercial Flat Deck/Open Deck experience preferred',
+			'Minimum 6 months of Load Securement experience preferred',
 		],
 		offer: [
 			'Competitive pay',
@@ -31,7 +31,7 @@ const positions = [
 			'Paid FAST/TWIC cards',
 		],
 		lookingFor: [
-			'2 years over‑the‑road experience',
+			'6 months over‑the‑road experience',
 			'Clean abstract',
 			'Ability to cross the border',
 			'Positive attitude',
@@ -122,14 +122,14 @@ const positions = [
 		description:
 			'Partner with us and maintain your independence while benefiting from our extensive network, competitive rates, and comprehensive support services.',
 		requirements: [
-			'Minimum 2 years of Class 1/AZ driving experience',
-			'Minimum 1 year of Commercial Flat Deck/Open Deck experience preferred',
-			'Minimum 1 year of Load Securement experience preferred',
+			'Minimum 1 year of Class 1/AZ driving experience',
+			'Minimum 6 months of Commercial Flat Deck/Open Deck experience preferred',
+			'Minimum 6 months of Load Securement experience preferred',
 		],
 		offer: [
 			'Competitive contract',
 			'Full benefit package effective immediately after orientation',
-			'Fuel Subsidy Program (calculated monthly, currently at .80¢)',
+			'Fuel Subsidy Program',
 			'Loaded & Empty miles paid equally',
 			'Frequent home time',
 			'Dedicated fleet manager',
@@ -139,7 +139,7 @@ const positions = [
 			'Discounted tire rates',
 		],
 		lookingFor: [
-			'2 years over‑the‑road experience',
+			'1 year over‑the‑road experience',
 			'Clean abstract',
 			'Ability to cross the border',
 			'Positive attitude',
@@ -175,7 +175,7 @@ const positions = [
 			},
 			{
 				name: 'heardAbout',
-				label: 'Where did you hear about Searcy Trucking?',
+				label: 'Where did you hear about X Transport ?',
 				type: 'text',
 			},
 			{

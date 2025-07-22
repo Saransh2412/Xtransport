@@ -74,7 +74,7 @@ Delivery Date: ${deliveryDate}`,
         from: config.email.user,
         to: email,
         subject: "Thanks for your quote request",
-        text: `Hi ${firstName},\n\nThank you for requesting a quote from XTransport. We have received your shipment details and our team will review them promptly.\n\nWe aim to provide you with a detailed quote within 24 business hours.\n\n— XTransport Team`,
+        text: `Hi ${firstName},\n\nThank you for requesting a quote from X Transport. We have received your shipment details and our team will review them promptly.\n\nWe aim to provide you with a detailed quote within 24 business hours.\n\n— X Transport Team`,
       },
     });
 
@@ -126,8 +126,8 @@ Drug/Alcohol Test Positive (5 years): ${testedPositive}`,
       toUser: {
         from: config.email.user,
         to: email,
-        subject: "Thanks for applying to XTransport",
-        text: `Hi ${firstName},\n\nThank you for applying to join XTransport as a driver. We have received your application and our recruiting team will review it carefully.\n\nIf your qualifications match our requirements, we will contact you to discuss the next steps in the hiring process.\n\n— XTransport Recruiting Team`,
+        subject: "Thanks for applying to X Transport",
+        text: `Hi ${firstName},\n\nThank you for applying to join X Transport as a driver. We have received your application and our recruiting team will review it carefully.\n\nIf your qualifications match our requirements, we will contact you to discuss the next steps in the hiring process.\n\n— X Transport Recruiting Team`,
       },
     });
 
@@ -181,8 +181,8 @@ Equipment Operated: ${equipmentOperated}`,
       toUser: {
         from: config.email.user,
         to: email,
-        subject: "Thanks for your interest in XTransport",
-        text: `Hi ${firstName},\n\nThank you for your interest in partnering with XTransport as an Owner Operator. We have received your information and our fleet management team will review your details.\n\nWe look forward to discussing potential partnership opportunities with you.\n\n— XTransport Fleet Management Team`,
+        subject: "Thanks for your interest in X Transport",
+        text: `Hi ${firstName},\n\nThank you for your interest in partnering with X Transport as an Owner Operator. We have received your information and our fleet management team will review your details.\n\nWe look forward to discussing potential partnership opportunities with you.\n\n— X Transport Fleet Management Team`,
       },
     });
 
@@ -216,8 +216,8 @@ ${message}`,
       toUser: {
         from: config.email.user,
         to: email,
-        subject: "Thanks for contacting XTransport",
-        text: `Hi ${name},\n\nThank you for reaching out to XTransport. We've received your message regarding "${subject}" and our team will get back to you as soon as possible.\n\n— XTransport Team`,
+        subject: "Thanks for contacting X Transport",
+        text: `Hi ${name},\n\nThank you for reaching out to X Transport. We've received your message regarding "${subject}" and our team will get back to you as soon as possible.\n\n— X Transport Team`,
       },
     });
 

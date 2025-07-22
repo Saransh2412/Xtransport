@@ -209,8 +209,8 @@ const ContactUs = () => {
                     <MapPin className="w-6 h-6 text-blue-500 mr-3 mt-1" />
                     <div>
                       <p className="font-medium text-gray-900">Head Office</p>
-                      <p className="text-gray-600">123 Transport Way</p>
-                      <p className="text-gray-600">Toronto, ON M5V 3A8</p>
+                      <p className="text-gray-600">236 Willowmere Way</p>
+                      <p className="text-gray-600">Chestermere, AB T1X 0E1</p>
                       <p className="text-gray-600">Canada</p>
                     </div>
                   </div>

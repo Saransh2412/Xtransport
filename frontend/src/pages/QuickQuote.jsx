@@ -111,8 +111,8 @@ export default function QuoteRequestPage() {
                 Want to speak with someone right now? We're available.
               </p>
               <div className="space-y-2">
-                <a href="tel:1-844-294-1058" className="text-blue-800 hover:text-blue-900 font-semibold text-lg block">
-                  1-844-294-1058
+                <a href="tel:+1-368-599-9677" className="text-blue-800 hover:text-blue-900 font-semibold text-lg block">
+                  +1-368-599-9677
                 </a>
                 <a href="mailto:info@xtransport.ca" className="text-blue-800 hover:text-blue-900 font-semibold text-lg block">
                   info@xtransport.ca
@@ -159,7 +159,7 @@ export default function QuoteRequestPage() {
                     <option value="project-management">Project Management & Logistics</option>
                     <option value="other">Other</option>
                   </select>
-                  <input type="text" name="weight" placeholder="Weight*" value={formData.weight} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
+                  <input type="text" name="weight" placeholder="Weight (lbs)*" value={formData.weight} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                 </div>
                 <textarea name="freightDescription" placeholder="Freight Description" value={formData.freightDescription} onChange={handleInputChange} rows="4" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-black"></textarea>
               </div>
@@ -170,9 +170,9 @@ export default function QuoteRequestPage() {
                   PICK-UP & DELIVERY
                 </h3>
                 <div className="grid grid-cols-3 gap-4 mb-4">
-                  <input type="text" name="length" placeholder="Length" value={formData.length} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
-                  <input type="text" name="height" placeholder="Height" value={formData.height} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
-                  <input type="text" name="width" placeholder="Width" value={formData.width} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="length" placeholder="Length (inches)" value={formData.length} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="height" placeholder="Height (inches)" value={formData.height} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="width" placeholder="Width (inches)" value={formData.width} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <input type="text" name="origin" placeholder="Origin*" value={formData.origin} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />

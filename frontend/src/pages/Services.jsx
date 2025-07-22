@@ -9,11 +9,10 @@ const serviceData = [
     key: "cross",
     title: "Cross-Border Transportation",
     bg: truck2,
-    desc: `Crossing the border into Canada or the US can be a complicated process. You will be working with customs brokers, officers and agents and negotiating paperwork. Not to mention not knowing if your outside carrier has the ability and knowledge to navigate all the regulations and requirements to get a shipment across the border. At XTransport, our group of highly specialized coordinators handle 6,000 cross-border shipments every year, putting your mind at ease that your shipment will be moved seamlessly throughout the whole process.
+    desc: `Crossing the border into Canada or the US can be a complicated process. You will be working with customs brokers, officers and agents and negotiating paperwork. Not to mention not knowing if your outside carrier has the ability and knowledge to navigate all the regulations and requirements to get a shipment across the border. At X Transport, our group of highly specialized coordinators handle 6,000 cross-border shipments every year, putting your mind at ease that your shipment will be moved seamlessly throughout the whole process.
 
-Being C-TPAT and PIP certified, we provide the highest level of security for your cross-border freight in collaboration with both Canada Border Services Agency and the US Customs and Border Protection.
 
-We can also offer customs clearance services into and out of Canada and the US through our trusted partnership with Cole International Customs Broker.`
+We can also offer customs clearance services into and out of Canada and the US through our trusted partnership.`
   },
   {
     key: "dry",

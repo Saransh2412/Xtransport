@@ -15,7 +15,7 @@ const AboutUs = () => {
             Who We Are at <span className="text-blue-400">X Transport Inc.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            Decades of experience in moving the heaviest and most complex freight across North America — safely, on time, every time.
+            Experience in moving the heaviest and most complex freight across North America — safely, on time, every time.
           </p>
         </div>
 
@@ -35,9 +35,9 @@ const AboutUs = () => {
           <div className="bg-white/90 rounded-xl shadow-xl p-6 sm:p-8">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 sm:gap-8 text-center text-blue-800 font-semibold">
               {[
-                { value: '15+', label: 'Years Experience' },
-                { value: '500+', label: 'Projects Completed' },
-                { value: '50+', label: 'Fleet Vehicles' },
+                { value: '2+', label: 'Years Experience' },
+                { value: '23+', label: 'Projects Completed' },
+                { value: '62+', label: 'Fleet Vehicles' },
                 { value: '99%', label: 'On-Time Delivery' }
               ].map(({ value, label }, index) => (
                 <div key={index}>
