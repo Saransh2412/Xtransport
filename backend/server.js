@@ -31,6 +31,7 @@ async function sendEmails({ toAdmin, toUser }) {
   if (toUser) await transporter.sendMail(toUser);
 }
 
+
 // =================== Quick Quote Form ===================
 app.post("/api/quick-quote", async (req, res) => {
   const {
@@ -42,9 +43,9 @@ app.post("/api/quick-quote", async (req, res) => {
   try {
     await sendEmails({
       toAdmin: {
-         from: config.email.user,      // must be your email
-  to: config.email.user,        // admin (you)
-  replyTo: email, 
+        from: config.email.user,      // must be your email
+        to: config.email.user,        // admin (you)
+        replyTo: email, 
         subject: "New Quick Quote Request",
         text: `Contact Information:
 Name: ${firstName} ${lastName}
