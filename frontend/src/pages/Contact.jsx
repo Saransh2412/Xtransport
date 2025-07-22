@@ -4,6 +4,9 @@ import {
   MessageSquare, Truck, Shield, Calculator
 } from 'lucide-react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import truckBackground from '../assets/truck2.jpg';
 import { useApi } from '../context/ApiContext';
 
@@ -22,6 +25,8 @@ const ContactUs = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -29,25 +34,36 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Message sent successfully!');
+    setIsSubmitting(true);
 
     const payload = { ...formData };
 
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    fetch(`${API_BASE_URL}/api/contact`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    }).catch(error => console.error('Error:', error));
+      if (!response.ok) throw new Error('Server Error');
+
+      toast.success('We will reach out to you soon! ✅');
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('We are facing some issues right now. Please try again later ❌');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -58,16 +74,13 @@ const ContactUs = () => {
       <div className="absolute inset-0 bg-black/50 z-0" />
       <div className="absolute inset-x-0 top-0 h-40 bg-white/0 backdrop-blur-md z-0" />
 
-      {/* Main Content */}
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Heading */}
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">Our Contact Information</h2>
             <p className="text-base sm:text-lg text-blue-300">Reach out to the right department for faster service</p>
           </div>
 
-          {/* Info Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <ContactCard
               icon={<Truck className="w-6 h-6 text-white" />}
@@ -107,9 +120,7 @@ const ContactUs = () => {
             />
           </div>
 
-          {/* Contact Form + Office Info */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-16">
-            {/* Contact Form */}
             <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -169,15 +180,27 @@ const ContactUs = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className={`w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>
 
-            {/* Office Info + Emergency Box */}
             <div className="space-y-8">
               <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Visit Our Office</h3>
@@ -219,11 +242,13 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };
 
-// Input Field with Icon
 const InputWithIcon = ({ label, name, type, placeholder, icon, value, onChange, required }) => (
   <div>
     <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
@@ -242,7 +267,6 @@ const InputWithIcon = ({ label, name, type, placeholder, icon, value, onChange, 
   </div>
 );
 
-// Contact Info Card
 const ContactCard = ({ icon, bgColor, title, email, phone, textColor, hoverColor }) => (
   <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
     <div className={`${bgColor} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>

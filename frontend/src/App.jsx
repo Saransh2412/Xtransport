@@ -6,6 +6,8 @@ import AboutUs from "./pages/AboutUs";
 import Footer from "./components/Footer";
 import ContactUs from "./pages/Contact";
 import QuoteRequestPage from "./pages/QuickQuote";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import AdminPanel from "./Admin/Admin";
 
 import Services from "./pages/Services";
@@ -18,6 +20,7 @@ function App() {
     <Router>
       <div className="bg-[#1d1a19] min-h-screen text-white">
         <Navbar />
+        <ToastContainer position="top-center" autoClose={4000} />
 
         <Routes>
           <Route path="/" element={<Home />} />

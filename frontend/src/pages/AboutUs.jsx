@@ -52,7 +52,7 @@ const AboutUs = () => {
 
       {/* WHY CHOOSE US */}
       <div className="relative bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: `url(${truckBg})` }}>
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 text-white">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">

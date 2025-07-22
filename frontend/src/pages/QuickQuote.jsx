@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useApi } from '../context/ApiContext'; // ✅ Import the API context
+import { useApi } from '../context/ApiContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function QuoteRequestPage() {
-  const { API_BASE_URL } = useApi(); // ✅ Use the API base URL from context
+  const { API_BASE_URL } = useApi();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,6 +29,8 @@ export default function QuoteRequestPage() {
     deliveryDate: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -35,51 +39,55 @@ export default function QuoteRequestPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-
-    alert('Quote request submitted successfully!');
+    setIsSubmitting(true);
 
     const payload = { ...formData };
 
-    setFormData({
-      companyName: '',
-      email: '',
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      streetAddress: '',
-      serviceType: '',
-      weight: '',
-      freightDescription: '',
-      length: '',
-      height: '',
-      width: '',
-      origin: '',
-      destination: '',
-      pickupDate: '',
-      deliveryDate: ''
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/quick-quote`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-    // ✅ Use API_BASE_URL instead of hardcoding
-    fetch(`${API_BASE_URL}/api/quick-quote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    }).catch(error => {
-      console.error('Error:', error);
-    });
+      if (!response.ok) throw new Error('Server error');
+
+      toast.success('We will reach out to you soon! ✅');
+
+      setFormData({
+        companyName: '',
+        email: '',
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        streetAddress: '',
+        serviceType: '',
+        weight: '',
+        freightDescription: '',
+        length: '',
+        height: '',
+        width: '',
+        origin: '',
+        destination: '',
+        pickupDate: '',
+        deliveryDate: ''
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error('We are facing some issues right now. Please try again later ❌');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-  // ...rest of your component's JSX
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-12">
-          
           {/* Left Column - Company Info */}
           <div className="space-y-8">
             <div>
@@ -97,7 +105,7 @@ export default function QuoteRequestPage() {
                 ready for the next challenge.
               </p>
             </div>
-            
+
             <div className="pt-8">
               <p className="text-gray-900 text-lg mb-4">
                 Want to speak with someone right now? We're available.
@@ -116,82 +124,22 @@ export default function QuoteRequestPage() {
           {/* Right Column - Form */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
             <div className="space-y-8">
-              
               {/* Contact Information */}
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-6 uppercase tracking-wide">
                   CONTACT INFORMATION
                 </h3>
-                
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="companyName"
-                      placeholder="Company name*"
-                      value={formData.companyName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email*"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
-                  </div>
+                  <input type="text" name="companyName" placeholder="Company name*" value={formData.companyName} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
+                  <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder="First name"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder="Last name"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
+                  <input type="text" name="firstName" placeholder="First name" value={formData.firstName} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="lastName" placeholder="Last name" value={formData.lastName} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="tel"
-                      name="phoneNumber"
-                      placeholder="Phone number"
-                      value={formData.phoneNumber}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="streetAddress"
-                      placeholder="Street address"
-                      value={formData.streetAddress}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
+                  <input type="tel" name="phoneNumber" placeholder="Phone number" value={formData.phoneNumber} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="streetAddress" placeholder="Street address" value={formData.streetAddress} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
                 </div>
               </div>
 
@@ -200,49 +148,20 @@ export default function QuoteRequestPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-6 uppercase tracking-wide">
                   SHIPMENT DETAILS
                 </h3>
-                
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <select
-                      name="serviceType"
-                      value={formData.serviceType}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-black"
-                      required
-                    >
-                      <option value="" className="text-black">Service Type</option>
-                      <option value="cross-border" className="text-black">Cross-Border Transportation</option>
-                      <option value="dry-van-reefer" className="text-black">Dry Van & Refrigerated (Reefer) Transportation</option>
-                      <option value="flatbed" className="text-black">Flatbed Shipping</option>
-                      <option value="heavy-haul" className="text-black">Heavy Haul & Over Dimensional</option>
-                      <option value="intermodal" className="text-black">Intermodal / Multimodal Transportation</option>
-                      <option value="project-management" className="text-black">Project Management & Logistics</option>
-                      <option value="other" className="text-black">Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="weight"
-                      placeholder="Weight*"
-                      value={formData.weight}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
-                  </div>
+                  <select name="serviceType" value={formData.serviceType} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-black" required>
+                    <option value="">Service Type</option>
+                    <option value="cross-border">Cross-Border Transportation</option>
+                    <option value="dry-van-reefer">Dry Van & Refrigerated (Reefer) Transportation</option>
+                    <option value="flatbed">Flatbed Shipping</option>
+                    <option value="heavy-haul">Heavy Haul & Over Dimensional</option>
+                    <option value="intermodal">Intermodal / Multimodal Transportation</option>
+                    <option value="project-management">Project Management & Logistics</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <input type="text" name="weight" placeholder="Weight*" value={formData.weight} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                 </div>
-                
-                <div>
-                  <textarea
-                    name="freightDescription"
-                    placeholder="Freight Description"
-                    value={formData.freightDescription}
-                    onChange={handleInputChange}
-                    rows="4"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-black"
-                  ></textarea>
-                </div>
+                <textarea name="freightDescription" placeholder="Freight Description" value={formData.freightDescription} onChange={handleInputChange} rows="4" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-black"></textarea>
               </div>
 
               {/* Pick-up & Delivery */}
@@ -250,106 +169,52 @@ export default function QuoteRequestPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-6 uppercase tracking-wide">
                   PICK-UP & DELIVERY
                 </h3>
-                
                 <div className="grid grid-cols-3 gap-4 mb-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="length"
-                      placeholder="Length"
-                      value={formData.length}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="height"
-                      placeholder="Height"
-                      value={formData.height}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="width"
-                      placeholder="Width"
-                      value={formData.width}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                    />
-                  </div>
+                  <input type="text" name="length" placeholder="Length" value={formData.length} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="height" placeholder="Height" value={formData.height} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
+                  <input type="text" name="width" placeholder="Width" value={formData.width} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="origin"
-                      placeholder="Origin*"
-                      value={formData.origin}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="destination"
-                      placeholder="Destination*"
-                      value={formData.destination}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
-                  </div>
+                  <input type="text" name="origin" placeholder="Origin*" value={formData.origin} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
+                  <input type="text" name="destination" placeholder="Destination*" value={formData.destination} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                 </div>
-                
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Date of Desired Loading*
-                    </label>
-                    <input
-                      type="date"
-                      name="pickupDate"
-                      value={formData.pickupDate}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Date of Desired Loading*</label>
+                    <input type="date" name="pickupDate" value={formData.pickupDate} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Date of Desired Delivery*
-                    </label>
-                    <input
-                      type="date"
-                      name="deliveryDate"
-                      value={formData.deliveryDate}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
-                      required
-                    />
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Date of Desired Delivery*</label>
+                    <input type="date" name="deliveryDate" value={formData.deliveryDate} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black" required />
                   </div>
                 </div>
-                
+
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-md transition-colors duration-200 uppercase tracking-wide text-sm"
+                  disabled={isSubmitting}
+                  className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-md transition-colors duration-200 uppercase tracking-wide text-sm flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  SUBMIT REQUEST
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : (
+                    'SUBMIT REQUEST'
+                  )}
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 }
