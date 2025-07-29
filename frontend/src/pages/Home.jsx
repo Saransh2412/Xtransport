@@ -2,6 +2,12 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import truck3 from '../assets/truck3.jpg';
 // import TestimonialCarousel from '../components/TestimonialCarousel';
+import flatbedImage from '../assets/flatbed.jpeg';
+import heavyHaulImage from '../assets/heavyhaul.jpeg';
+import projectManagementImage from '../assets/projectmng.jpeg';
+import intermodelImage from '../assets/intermodal.jpeg';
+import MapComponent from '../components/MapComponent';
+
 
 import {
   Shield, Clock, Users, Globe,
@@ -21,10 +27,10 @@ const Home = () => {
   const services = [
     { title: "Cross-Border Transportation", description: "Seamless freight movement between Canada and USA with full customs handling and documentation", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" },
     { title: "Dry Van & Refrigerated Transportation", description: "Temperature-controlled and standard freight solutions for all cargo types with modern fleet", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" },
-    { title: "Flatbed Shipping", description: "Specialized transport for oversized, heavy, and unconventional cargo with expert handling", image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" },
-    { title: "Heavy Haul & Over Dimensional", description: "Expert handling of oversized loads with proper permits, route planning and safety protocols", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" },
-    { title: "Intermodal/Multimodal Transportation", description: "Efficient combination of rail, road, and sea transport for optimal cost savings and flexibility", image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80" },
-    { title: "Project Management & Logistics", description: "End-to-end supply chain management with dedicated project coordination and strategic planning", image: "https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=800&q=80" },
+    { title: "Flatbed/Stepdeck Shipping", description: "Specialized transport for oversized, heavy, and unconventional cargo with expert handling", image: flatbedImage },
+    { title: "Heavy Haul & Over Dimensional", description: "Expert handling of oversized loads with proper permits, route planning and safety protocols", image: heavyHaulImage },
+    { title: "Intermodal/Multimodal Transportation", description: "Efficient combination of rail, road, and sea transport for optimal cost savings and flexibility", image: intermodelImage },
+    { title: "Project Management & Logistics", description: "End-to-end supply chain management with dedicated project coordination and strategic planning", image: projectManagementImage },
   ];
 
   const stats = [
@@ -35,7 +41,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-[#1d1a19] text-white">
+    <div className="bg-[#ffffff] text-white">
       <HeroSection />
 
       {/* Why Choose Us */}
@@ -171,10 +177,29 @@ const Home = () => {
       <TestimonialCarousel /> */}
 
       {/* Map */}
-      <section className="relative h-[500px] w-full">
+      <div className=" bg-white container mx-auto px-4 py-6" >
+      <div className=" text-center mb-6">
+        <h1 className="text-3xl font-bold text-blue-900 mb-2">Our Office Locations</h1>
+        <p className="text-black">Serving Canada with strategic locations across major transportation corridors</p>
+      </div>
+
+      <MapComponent />
+
+     
+    </div>
+    
+{/* <section className="relative w-full bg-white text-gray-900">
+  <div className="text-center py-10">
+    <h3 className="text-3xl font-bold mb-2">Our Service Areas</h3>
+    <p className="text-gray-600">Covering major cities across Canada</p>
+  </div>
+  <MapComponent />
+</section> */}
+
+      {/* <section className="relative h-[500px] w-full">
         <iframe
           title="XTransport USA & Canada Service Area"
-          src="https://www.google.com/maps/embed?pb=..."
+          src="https://www.google.com/maps/d/u/0/embed?mid=10PKG9axrH4bba2KClUBzyeUrbz-62Fw&ehbc=2E312F"
           className="absolute inset-0 w-full h-full border-0"
           allowFullScreen
           loading="lazy"
@@ -187,7 +212,7 @@ const Home = () => {
           <h3 className="text-2xl font-bold mb-2">Our Service Areas</h3>
           <p className="text-gray-200">Covering entire USA & Canada with trusted logistics</p>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

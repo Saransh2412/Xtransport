@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this to your globals.css, index.css, or App.css */
+
+/* Map background override */
+.leaflet-container {
+  background-color: white !important;
+}
+
+/* Optional: Ensure map container also has white background */
+.map-container {
+  background-color: white !important;
+}

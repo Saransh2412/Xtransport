@@ -24,7 +24,7 @@ Our refrigerated units maintain temperature integrity from origin to destination
   },
   {
     key: "flat",
-    title: "Flatbed Shipping",
+    title: "Flatbed/Stepdeck Shipping",
     bg: truck3,
     desc: `Ideal for oversized or heavy cargo, our flatbed trailers provide the flexibility and strength needed for construction materials, machinery, and other unconventional freight types.
 
